@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteRequisitoRolParametro" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b26f990b-2407-4d39-8269-c60651304e33">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="P_DESCRIPCION" class="java.lang.String" isForPrompting="false"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT q.IdRol, r.DescRol, q.DescripReq
+FROM dbo.RequisitoRol q
+INNER JOIN dbo.Rol r ON r.IdRol = q.IdRol
+WHERE ($P{P_DESCRIPCION} IS NULL OR $P{P_DESCRIPCION} = ''
+       OR r.DescRol LIKE '%' + $P{P_DESCRIPCION} + '%'
+       OR q.DescripReq LIKE '%' + $P{P_DESCRIPCION} + '%')
+ORDER BY q.IdRol, q.DescripReq]]>
+	</queryString>
+	<field name="IdRol" class="java.lang.Integer"/>
+	<field name="DescRol" class="java.lang.String"/>
+	<field name="DescripReq" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="126" y="22" width="306" height="24" uuid="ca6101cd-407d-4512-941f-623bcc435a98"/>
+				<textElement textAlignment="Justified">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE REQUISITOS POR ROL]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="38" y="17" width="80" height="20" uuid="43fd0b14-603a-4a19-bdb6-4b9e28cf1598"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID Rol]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="130" y="17" width="150" height="20" uuid="81ca5107-4abf-468f-a284-42e33f26726f"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rol]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="17" width="230" height="20" uuid="6f9e20bd-a87c-4483-9f2f-5fe797378a14"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Requisito]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement x="38" y="0" width="80" height="20" uuid="8be192f1-51a6-4993-a464-62b291bcb9f8"/>
+				<textFieldExpression><![CDATA[$F{IdRol}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="130" y="0" width="150" height="20" uuid="4d9c39cf-63e9-40ff-afa9-4edf6e78a71e"/>
+				<textFieldExpression><![CDATA[$F{DescRol}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="300" y="0" width="230" height="20" uuid="855afb75-4fc6-41bd-a20d-1b0764df72de"/>
+				<textFieldExpression><![CDATA[$F{DescripReq}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
