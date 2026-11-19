@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteRol" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="16ef4c15-b8a3-47f7-899b-7669314f8d6a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT IdRol, DescRol, Sueldo
+FROM dbo.Rol
+ORDER BY IdRol]]>
+	</queryString>
+	<field name="IdRol" class="java.lang.Integer"/>
+	<field name="DescRol" class="java.lang.String"/>
+	<field name="Sueldo" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="176" y="22" width="206" height="24" uuid="36ebd80a-8dd6-4e13-be13-34c9e29e184b"/>
+				<textElement textAlignment="Justified">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE ROLES]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="38" y="17" width="80" height="20" uuid="ccdf6733-e78e-4484-85a6-cfbb757ffaa1"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID Rol]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="140" y="17" width="250" height="20" uuid="b2d42e27-2900-4572-a1bc-47acfda25126"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descripción]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="420" y="17" width="100" height="20" uuid="8fd5cb7e-7f76-44a0-bcec-3f5feb55044e"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sueldo]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement x="38" y="0" width="80" height="20" uuid="5d51e6de-5df6-40b0-9bd2-64b8a74ccbf7"/>
+				<textFieldExpression><![CDATA[$F{IdRol}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="0" width="250" height="20" uuid="48c37cf9-a944-4806-bbcb-f9b0c220c27f"/>
+				<textFieldExpression><![CDATA[$F{DescRol}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="420" y="0" width="100" height="20" uuid="0d974cd7-f55a-4e84-aa35-eaf06aea26d8"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{Sueldo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
