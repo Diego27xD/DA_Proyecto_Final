@@ -13,6 +13,7 @@ public class Empleado {
     }
 
     public Empleado(int IdEmpleado, String IdEtnia, String IdEstCivil, String IdGenero, String Apellidos, String Nombres, String FechNac, String IdEstado) {
+        
         this.IdEmpleado = IdEmpleado;
         this.IdEtnia = IdEtnia;
         this.IdEstCivil = IdEstCivil;
@@ -21,8 +22,8 @@ public class Empleado {
         this.Nombres = Nombres;
         this.FechNac = FechNac;
         this.IdEstado = IdEstado; //dddd
-        
-        
+        // PRUEBA DE GIT HUB
+       
         //prueba
     }
 
