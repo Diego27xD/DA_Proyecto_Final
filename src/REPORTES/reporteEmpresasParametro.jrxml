@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ac829a18-931f-42c4-bf1c-dc43f8ccb0a8">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="parTipoEmpresa" class="java.lang.String">
+		<defaultValueExpression><![CDATA[null]]></defaultValueExpression>
+	</parameter>
+	<parameter name="cantidadResultado" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[10]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT TOP ($P{cantidadResultado})
+     Empresa."IdEmpresa" AS Empresa_IdEmpresa,
+     Empresa."Descrip" AS Empresa_Descrip,
+     Empresa."TipoEmp" AS Empresa_TipoEmp,
+     Empresa."Direccion" AS Empresa_Direccion,
+     Empresa."Tlf" AS Empresa_Tlf,
+     Empresa."PersContacto" AS Empresa_PersContacto,
+     Empresa."Web" AS Empresa_Web
+FROM
+     "dbo"."Empresa" Empresa
+WHERE
+     NULLIF(LTRIM(RTRIM($P{parTipoEmpresa})), '') IS NULL OR
+     Empresa."TipoEmp" =$P{parTipoEmpresa} ;]]>
+	</queryString>
+	<field name="Empresa_IdEmpresa" class="java.lang.Integer"/>
+	<field name="Empresa_Descrip" class="java.lang.String"/>
+	<field name="Empresa_TipoEmp" class="java.lang.String"/>
+	<field name="Empresa_Direccion" class="java.lang.String"/>
+	<field name="Empresa_Tlf" class="java.lang.String"/>
+	<field name="Empresa_PersContacto" class="java.lang.String"/>
+	<field name="Empresa_Web" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement x="193" y="0" width="156" height="20" uuid="8d832f11-ff81-48cc-ae2c-f3fcbde353da"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte de Empresas por Tipo]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="f1c8efa1-c908-490b-a4ff-2f1d35715446"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lista de empresas:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="37" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="49" height="20" uuid="c417ccb5-1b30-43e5-8d32-a1ee3e608f19"/>
+				<text><![CDATA[Código]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="49" y="0" width="100" height="20" uuid="14e6ed2c-0e9c-4d0e-926e-d9c894c1ca03"/>
+				<text><![CDATA[Nombre Legal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="149" y="0" width="100" height="20" uuid="fdea4a59-2965-475f-b0b8-a1ff6fba0f24"/>
+				<text><![CDATA[Dirección]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="249" y="0" width="100" height="20" uuid="098386a3-d2ab-471f-9d7a-06d192f43a0e"/>
+				<text><![CDATA[Teléfono]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="349" y="2" width="100" height="20" uuid="9d8cd294-aa1b-4d84-a9f3-93ea777c3584"/>
+				<text><![CDATA[Contacto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="449" y="0" width="100" height="20" uuid="ec4f9899-1849-4a41-a530-a1a537d3aa76"/>
+				<text><![CDATA[Empresa_Web]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="42" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="49" height="20" uuid="85d41c26-ca18-4165-b2b3-6143d6ce113d"/>
+				<textFieldExpression><![CDATA[$F{Empresa_IdEmpresa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="49" y="0" width="100" height="20" uuid="f2bbee7b-b1cc-47c0-8aa7-319e3f9d8874"/>
+				<textFieldExpression><![CDATA[$F{Empresa_Descrip}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="149" y="0" width="100" height="20" uuid="fb05f8c1-3150-4ace-9f88-df2a3795a218"/>
+				<textFieldExpression><![CDATA[$F{Empresa_Direccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="249" y="0" width="100" height="20" uuid="e88de1f4-dc58-4ed0-8375-fa69f30aee95"/>
+				<textFieldExpression><![CDATA[$F{Empresa_Tlf}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="349" y="0" width="100" height="20" uuid="29428943-a02e-4738-a515-baadd11cc526"/>
+				<textFieldExpression><![CDATA[$F{Empresa_PersContacto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="449" y="0" width="100" height="20" uuid="31a0f11f-6bc6-4e63-aed1-d92a83576008"/>
+				<textFieldExpression><![CDATA[$F{Empresa_Web}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

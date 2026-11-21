@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0acb4e8d-5b66-4322-81f9-3251aadb357a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     Empresa."IdEmpresa" AS Empresa_IdEmpresa,
+     Empresa."Descrip" AS Empresa_Descrip,
+     Empresa."TipoEmp" AS Empresa_TipoEmp,
+     Empresa."Direccion" AS Empresa_Direccion,
+     Empresa."Tlf" AS Empresa_Tlf,
+     Empresa."PersContacto" AS Empresa_PersContacto,
+     Empresa."Web" AS Empresa_Web
+FROM
+     "dbo"."Empresa" Empresa]]>
+	</queryString>
+	<field name="Empresa_Web" class="java.lang.String"/>
+	<field name="Empresa_IdEmpresa" class="java.lang.Integer"/>
+	<field name="Empresa_Descrip" class="java.lang.String"/>
+	<field name="Empresa_TipoEmp" class="java.lang.String"/>
+	<field name="Empresa_Direccion" class="java.lang.String"/>
+	<field name="Empresa_Tlf" class="java.lang.String"/>
+	<field name="Empresa_PersContacto" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="27" splitType="Stretch">
+			<staticText>
+				<reportElement x="164" y="0" width="236" height="20" uuid="eb2bd284-4e94-45fa-9eba-5f30792de6c0"/>
+				<textElement>
+					<font size="14" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE EMPRESAS SIMPLE]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="200" height="20" uuid="2661fdf1-4069-4de0-bf4f-cc71efbc7519"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Listas de empresas registradas en los CV]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="6af7697b-7e2f-4a96-ad00-ccbce4ca6140"/>
+				<text><![CDATA[Código]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="100" height="20" uuid="2e7297e5-9af3-4496-b35a-66b23ff562e3"/>
+				<text><![CDATA[Nombre Legal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="100" height="20" uuid="be7f3519-a340-43db-9199-7f8180f8e1d2"/>
+				<text><![CDATA[Tipo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="0" width="100" height="20" uuid="ac72ba84-0d23-4f2d-bda5-b9dda263f28f"/>
+				<text><![CDATA[Teléfono]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="0" width="100" height="20" uuid="b9346ed6-6e68-4916-ae07-dc50f8700624"/>
+				<text><![CDATA[Dirección]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="4454c925-8a06-4f27-9256-033ce700fffb"/>
+				<textFieldExpression><![CDATA[$F{Empresa_IdEmpresa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="100" height="20" uuid="d4f6b411-d80b-46a7-9e82-732729253a28"/>
+				<textFieldExpression><![CDATA[$F{Empresa_Descrip}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="100" height="20" uuid="af674ee2-57a4-4a74-9ff9-20a84b73ff54"/>
+				<textFieldExpression><![CDATA[$F{Empresa_TipoEmp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="0" width="100" height="20" uuid="4372ce01-2c0d-4829-95f2-21fac20a4981"/>
+				<textFieldExpression><![CDATA[$F{Empresa_Tlf}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="0" width="155" height="20" uuid="d7129ba8-992a-4eb6-8b88-b2247af155f3"/>
+				<textFieldExpression><![CDATA[$F{Empresa_Direccion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
