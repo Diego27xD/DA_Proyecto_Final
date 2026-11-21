@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteHabilidadParametro" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d1275e65-f185-4871-84a8-b7c5b8c79304">
+ <property name="ireport.zoom" value="1.0"/><property name="ireport.x" value="0"/><property name="ireport.y" value="0"/>
+ <parameter name="P_DESCRIPCION" class="java.lang.String" isForPrompting="false"/>
+	<queryString language="SQL"><![CDATA[SELECT Id_Habilidad, DescHab FROM dbo.Habilidades WHERE ($P{P_DESCRIPCION} IS NULL OR $P{P_DESCRIPCION} = '' OR DescHab LIKE '%' + $P{P_DESCRIPCION} + '%') ORDER BY Id_Habilidad]]></queryString>
+
+ <field name="Id_Habilidad" class="java.lang.Integer"/><field name="DescHab" class="java.lang.String"/>
+ <background><band splitType="Stretch"/></background>
+ <title><band height="79" splitType="Stretch"><staticText><reportElement x="176" y="22" width="250" height="24" uuid="fb92accc-d2c1-40e1-aed7-1112bdab18b7"/><textElement textAlignment="Justified"><font size="16" isBold="true"/></textElement><text><![CDATA[REPORTE DE HABILIDADES]]></text></staticText></band></title>
+ <pageHeader><band height="35" splitType="Stretch"/></pageHeader>
+ <columnHeader><band height="61" splitType="Stretch">
+  <staticText><reportElement x="54" y="20" width="120" height="20" uuid="273e7fac-58d7-4edc-8e3c-3d57f75bd03f"/><textElement><font size="12" isBold="true"/></textElement><text><![CDATA[ID Habilidad]]></text></staticText>
+  <staticText><reportElement x="260" y="20" width="180" height="20" uuid="604210ad-7b3c-4efa-9262-5d02aeb3c937"/><textElement><font size="12" isBold="true"/></textElement><text><![CDATA[Descripción]]></text></staticText>
+ </band></columnHeader>
+ <detail><band height="35" splitType="Stretch">
+  <textField><reportElement x="54" y="1" width="120" height="20" uuid="43c80cc6-0150-4978-90bc-f5ba0c527682"/><textFieldExpression><![CDATA[$F{Id_Habilidad}]]></textFieldExpression></textField>
+  <textField><reportElement x="260" y="1" width="260" height="20" uuid="6ab4acae-c193-41f2-9f09-f8893a28f86f"/><textFieldExpression><![CDATA[$F{DescHab}]]></textFieldExpression></textField>
+ </band></detail>
+ <columnFooter><band height="45" splitType="Stretch"/></columnFooter><pageFooter><band height="54" splitType="Stretch"/></pageFooter><summary><band height="42" splitType="Stretch"/></summary>
+</jasperReport>
