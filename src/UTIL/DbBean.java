@@ -77,11 +77,25 @@ public class DbBean {
     }
     public int ejecutaSQL(String sql)throws SQLException{
         Statement s = this.dbCon.createStatement();
-        int r = s.executeUpdate(sql);
-        if(r == 0){
-            return 0;
-        }else{
-            return r;
+        try {
+            return s.executeUpdate(sql);
+        } finally {
+            s.close();
+        }
+    }
+    public void cerrarTransaccion(ResultSet rst) {
+        if (rst == null) {
+            return;
+        }
+        try{
+            java.sql.Statement sentencia = rst.getStatement();
+            try {
+                rst.close();
+            } finally {
+                sentencia.close();
+            }
+        }catch(SQLException ex){
+            ex.printStackTrace();
         }
     }
 }
