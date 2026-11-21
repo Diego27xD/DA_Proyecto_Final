@@ -20,7 +20,10 @@ public class Empleado {
         this.Apellidos = Apellidos;
         this.Nombres = Nombres;
         this.FechNac = FechNac;
-        this.IdEstado = IdEstado;
+        this.IdEstado = IdEstado; //dddd
+        
+        
+        //prueba
     }
 
     public int getIdEmpleado() {
