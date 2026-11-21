@@ -1,13 +1,26 @@
 package UI;
 
+import UTIL.DbBean;
+import java.sql.SQLException;
+import net.sf.jasperreports.engine.JRException;
+
 public class MDI extends javax.swing.JFrame {
 
     /**
      * Creates new form MDI
      */
+    FrmReporteFiltradoEmpresa frmReporteFiltradoEmpresa;
     public MDI() {
         initComponents();
         this.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+    }
+    
+    private int dimH(){
+        return this.escritorio.getHeight();
+    }
+    
+    private int dimW(){
+        return this.escritorio.getWidth();
     }
 
     private void abre(javax.swing.JInternalFrame frm){
@@ -45,6 +58,9 @@ public class MDI extends javax.swing.JFrame {
         sMnuRol = new javax.swing.JMenuItem();
         sMnuRequisitoRol = new javax.swing.JMenuItem();
         sMnuTipoContrato = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Proyecto Final - BD_RRHH");
@@ -170,6 +186,31 @@ public class MDI extends javax.swing.JFrame {
 
         jMenuBar5.add(mnuMantenimiento);
 
+        jMenu1.setText("Reportes");
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
+
+        jMenuItem1.setText("Empresas - Simple");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuItem2.setText("Empresa - Filtros");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
+
+        jMenuBar5.add(jMenu1);
+
         setJMenuBar(jMenuBar5);
 
         pack();
@@ -243,6 +284,32 @@ public class MDI extends javax.swing.JFrame {
         abre(new FrmMantTipoContrato());
     }//GEN-LAST:event_sMnuTipoContratoActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        try{
+            String ruta = "src/REPORTES/reporteEmpresasSimple.jasper";
+            DbBean db = new DbBean();
+            db.connectRep(ruta, null, false);
+        }catch(SQLException ex){
+           ex.printStackTrace();
+        }catch(JRException ex){
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        frmReporteFiltradoEmpresa = new FrmReporteFiltradoEmpresa(this.dimH(), this.dimW());
+        this.escritorio.add(frmReporteFiltradoEmpresa);
+        frmReporteFiltradoEmpresa.setVisible(true);
+        // frmReporteFiltradoEmpresa.setSize(750, 200);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -280,7 +347,10 @@ public class MDI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar5;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenu mnuMantenimiento;
     private javax.swing.JMenuItem sMnuArea;
     private javax.swing.JMenuItem sMnuCargo;
@@ -292,8 +362,8 @@ public class MDI extends javax.swing.JFrame {
     private javax.swing.JMenuItem sMnuGenero;
     private javax.swing.JMenuItem sMnuHabilidad;
     private javax.swing.JMenuItem sMnuInstitucion;
-    private javax.swing.JMenuItem sMnuRol;
     private javax.swing.JMenuItem sMnuRequisitoRol;
+    private javax.swing.JMenuItem sMnuRol;
     private javax.swing.JMenuItem sMnuTipoContrato;
     // End of variables declaration//GEN-END:variables
 }
