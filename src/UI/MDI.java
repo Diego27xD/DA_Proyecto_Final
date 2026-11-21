@@ -47,6 +47,7 @@ public class MDI extends javax.swing.JFrame {
         mnuMantenimiento = new javax.swing.JMenu();
         sMnuArea = new javax.swing.JMenuItem();
         sMnuCargo = new javax.swing.JMenuItem();
+        sMnuCv = new javax.swing.JMenuItem();
         sMnuEmpleado = new javax.swing.JMenuItem();
         sMnuEmpresa = new javax.swing.JMenuItem();
         sMnuEstado = new javax.swing.JMenuItem();
@@ -95,6 +96,13 @@ public class MDI extends javax.swing.JFrame {
             }
         });
         mnuMantenimiento.add(sMnuCargo);
+        sMnuCv.setText("CV");
+        sMnuCv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sMnuCvActionPerformed(evt);
+            }
+        });
+        mnuMantenimiento.add(sMnuCv);
 
         sMnuEmpleado.setText("Empleado");
         sMnuEmpleado.addActionListener(new java.awt.event.ActionListener() {
@@ -224,6 +232,9 @@ public class MDI extends javax.swing.JFrame {
         abre(new FrmCargo());
     }//GEN-LAST:event_sMnuCargoActionPerformed
 
+    private void sMnuCvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sMnuCvActionPerformed
+        abre(new FrmCv());
+    }//GEN-LAST:event_sMnuCvActionPerformed
     private void sMnuEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sMnuEmpleadoActionPerformed
         abre(new FrmEmpleado());
     }//GEN-LAST:event_sMnuEmpleadoActionPerformed
@@ -354,6 +365,7 @@ public class MDI extends javax.swing.JFrame {
     private javax.swing.JMenu mnuMantenimiento;
     private javax.swing.JMenuItem sMnuArea;
     private javax.swing.JMenuItem sMnuCargo;
+    private javax.swing.JMenuItem sMnuCv;
     private javax.swing.JMenuItem sMnuEmpleado;
     private javax.swing.JMenuItem sMnuEmpresa;
     private javax.swing.JMenuItem sMnuEstado;

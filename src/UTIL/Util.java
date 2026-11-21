@@ -2,6 +2,7 @@ package UTIL;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Vector;
 
 public class Util {
 
@@ -69,5 +70,22 @@ public class Util {
             e.printStackTrace();
         }
         return nR;
+    }
+    
+    public Vector<Vector> listarOpciones(DbBean db, String sql) throws SQLException {
+        
+        Vector<Vector> lista = new Vector<Vector>();
+        ResultSet rst = db.resultadoSQL(sql);
+        try {
+            while (rst.next()) {
+                Vector vec = new Vector();
+                vec.addElement(rst.getInt(1));
+                vec.addElement(rst.getString(2));
+                lista.addElement(vec);
+            }
+        } finally {
+            db.cerrarTransaccion(rst);
+        }
+        return lista;
     }
 }
